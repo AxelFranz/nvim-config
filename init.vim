@@ -10,69 +10,66 @@
 " properly set to work with the Vim-related packages.
 runtime! archlinux.vim
 
-" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 " If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
 " Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
 " and configure vim to your own liking! do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
 call plug#begin()
-
-" Plugin pour les multicurseurs
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-" Fermer automatiquement les tag xml/html
-Plug 'alvan/vim-closetag'
-
-" Preview des couleurs en hexadecimal quand on fait du CSS
-Plug 'ap/vim-css-color'
-
-" Ferme automatiquement les parenthèses et autres
-Plug 'jiangmiao/auto-pairs'
-
-" Pour changer de buffers rapidement mais en vrai osef
-Plug 'ctrlpvim/ctrlp.vim'
-
-" La barre du bas en joli
-Plug 'nvim-lualine/lualine.nvim'
-
-" Avoir des icones en plus (DEPENDENCE SUPER IMPORTANT)
+" DEPENDENCY FOR A LOT OF PLUGINS
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Pour parse du code (osef pour moi c'est de la dépendence)
+" DEPENDENCY TOO
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
-" Bibliothèques avec pleins de foncitonnalités déclarées dans le lua
+" Multicursor // Not set up yet
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+" Autoclose tag
+Plug 'alvan/vim-closetag'
+
+" Preview hex colors
+Plug 'ap/vim-css-color'
+
+" Autoclose parenthesis,...
+Plug 'jiangmiao/auto-pairs'
+
+" Idk i don't remember but smh i'll keep it
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Bottom line config
+Plug 'nvim-lualine/lualine.nvim'
+
+" Plugin library (everything is set up in the lua part)
 Plug 'echasnovski/mini.nvim'
 
-" Le thème
+" Visual theme
 Plug 'EdenEast/nightfox.nvim'
 
-" L'explorateur de fichier
+" File explorer
 Plug 'nvim-tree/nvim-tree.lua'
 
-" Pour simplifier l'HTML
+" HTML tools
 Plug 'mattn/webapi-vim'
 Plug 'mattn/emmet-vim'
 
-" Preview basique en markdown
+" Markdown tools
 Plug 'ixru/nvim-markdown'
 
-" Config des LSP (j'utilise pas en vrai)
+" LSP config // Not used
 Plug 'williamboman/mason.nvim' 
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
-" Je remap le Leader à Espace car touche inutilisée
+" Remap Leader to space
 map <Space> <Leader>
 
 " Remove whitespace
 nmap <Space>r :%s/\s\+$//e<Enter>
 
-" Pour tab/shifttab
+" For CTRL T/D in visual
 vnoremap <Tab> >gV
 vnoremap <S-Tab> <gV
 
@@ -82,7 +79,7 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-" Pour bouger des lignes avec alt + lettre peu importe le mode
+" Move lines no matter the mode
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 inoremap <A-j> <Esc>:m .+1<CR>==gi
@@ -90,10 +87,11 @@ inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Config d'Emmet
+" Emmet Config
 let g:user_emmet_leader_key='<Leader>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
+" Change next line if you're not french :) 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'fr'},
 \  'html': {
@@ -111,37 +109,36 @@ let g:user_emmet_settings = {
 \              ."</head>\n"
 \              ."<body>\n\t${child}|\n</body>\n"
 \              ."</html>",
-\      'favicon':"<link rel=\"shortcut icon\" type=\"image/png\" href=\"logo.png\" />",
 \    },
 \  },
 \}
 
-" Syntaxe pour lier un type de fichier à une extension (ici prolog)
+" File-dependent plugin enabling
 autocmd BufNewFile,BufRead *.pl set filetype=prolog
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-" On affiche les lignes en relatif
+" For number lines
 set number relativenumber
 set nu rnu
 
-" Coloration syntaxique
+" Syntax highlighting
 syntax on
 
-" Mappage de l'affichage de NvimTree à <Leader>e
+" File explorer remap
 nmap <Leader>e <cmd>NvimTreeToggle<cr>
 
-" Truc pour que les tabs marchent et bien
+" Tab fixing
 set autoindent
 set expandtab
 set tabstop=4
 set softtabstop=2
 set shiftwidth=4
 
-" Theme de NeoVim
+" Enabling the theme
 colorscheme nordfox
 
 
-" Fichier Lua de configuration
+" Lua File
 lua << EOF
 local theme = require('lualine.themes.auto')
 
