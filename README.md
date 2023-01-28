@@ -3,6 +3,7 @@
 So i've been using neovim for a while so I thought it might be useful to share a fully documented config file that i'm using everyday.
 
 To enable my config file you need :
+- [Neovim](https://github.com/neovim/neovim) of course
 - Plug installed : `curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
 Then, just copy the file to `~/.config/nvim/init.vim`
