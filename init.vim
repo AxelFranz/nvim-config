@@ -70,8 +70,8 @@ map <Space> <Leader>
 nmap <Space>r :%s/\s\+$//e<Enter>
 
 " For CTRL T/D in visual
-vnoremap <Tab> >gV
-vnoremap <S-Tab> <gV
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " copy and paste
 vmap <C-c> "+yi
