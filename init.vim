@@ -61,6 +61,9 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
 
+" Beautify with :Beautify
+Plug 'zeekay/vim-beautify'
+
 call plug#end()
 
 " Remap Leader to space
