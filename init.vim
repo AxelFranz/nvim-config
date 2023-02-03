@@ -127,6 +127,10 @@ set nu rnu
 " Syntax highlighting
 syntax on
 
+" Add Lines without leaving normal mode
+nnoremap <Leader>o o<Esc>0"_D
+nnoremap <Leader>O O<Esc>0"_D
+
 " File explorer remap
 nmap <Leader>e <cmd>NvimTreeToggle<cr>
 
