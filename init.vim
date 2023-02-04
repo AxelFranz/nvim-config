@@ -185,6 +185,7 @@ require('nvim-treesitter.configs').setup({
     --- parsers....
   },
 })
+
 require('mini.comment').setup()
 require('mini.completion').setup()
 require('mini.cursorword').setup()
@@ -205,8 +206,10 @@ require('nvim-tree').setup({
 })
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {},
+  ensure_installed = {"clangd"},
   automatic_installation = true
 })
+
+require("lspconfig").clangd.setup {}
 
 EOF
