@@ -45,6 +45,8 @@ Plug 'echasnovski/mini.nvim'
 
 " Visual theme
 Plug 'EdenEast/nightfox.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'romgrk/doom-one.vim'
 
 " File explorer
 Plug 'nvim-tree/nvim-tree.lua'
@@ -142,8 +144,7 @@ set softtabstop=2
 set shiftwidth=4
 
 " Enabling the theme
-colorscheme nordfox
-
+colorscheme doom-one
 
 " Lua File
 lua << EOF
@@ -210,6 +211,32 @@ require("mason-lspconfig").setup({
   automatic_installation = true
 })
 
-require("lspconfig").clangd.setup {}
+require("mason-lspconfig").setup_handlers {
+	-- The first entry (without a key) will be the default handler
+	-- and will be called for each installed server that doesn't have
+	-- a dedicated handler.
+	function (server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup {}
+	end,
+}
+
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig/configs')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
 
 EOF
