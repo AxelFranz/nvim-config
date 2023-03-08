@@ -46,7 +46,8 @@ Plug 'echasnovski/mini.nvim'
 " Visual theme
 Plug 'EdenEast/nightfox.nvim'
 Plug 'cocopon/iceberg.vim'
-Plug 'romgrk/doom-one.vim'
+Plug 'NTBBloodbath/doom-one.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 " File explorer
 Plug 'nvim-tree/nvim-tree.lua'
@@ -95,7 +96,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Emmet Config
 let g:user_emmet_leader_key='<Leader>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
+autocmd FileType html,css,javascript,php EmmetInstall
 " Change next line if you're not french :) 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'fr'},
@@ -144,7 +145,7 @@ set softtabstop=2
 set shiftwidth=4
 
 " Enabling the theme
-colorscheme doom-one
+colorscheme nordfox
 
 " Lua File
 lua << EOF
