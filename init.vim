@@ -130,6 +130,9 @@ set nu rnu
 " Syntax highlighting
 syntax on
 
+" Clear hightlighting
+nmap <F3> :noh<Enter>
+
 " Add Lines without leaving normal mode
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
