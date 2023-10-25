@@ -97,6 +97,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 let g:user_emmet_leader_key='<Leader>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript,php EmmetInstall
+
 " Change next line if you're not french :) 
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'fr'},
@@ -133,6 +134,9 @@ syntax on
 " Clear hightlighting
 nmap <F3> :noh<Enter>
 
+" ; in normal adds ; at the end of the line
+nmap ; A;<Esc>
+
 " Add Lines without leaving normal mode
 nnoremap <Leader>o o<Esc>0"_D
 nnoremap <Leader>O O<Esc>0"_D
@@ -153,6 +157,7 @@ colorscheme nordfox
 " Lua File
 lua << EOF
 local theme = require('lualine.themes.auto')
+
 
 require('lualine').setup({
   options = {
@@ -242,5 +247,6 @@ lspconfig.emmet_ls.setup({
       },
     }
 })
+
 
 EOF
