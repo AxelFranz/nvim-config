@@ -67,6 +67,9 @@ Plug 'neovim/nvim-lspconfig'
 " Beautify with :Beautify
 Plug 'zeekay/vim-beautify'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'AntonVanAssche/md-headers.nvim'
+
 call plug#end()
 
 " Remap Leader to space
@@ -74,6 +77,8 @@ map <Space> <Leader>
 
 " Remove whitespace
 nmap <Space>r :%s/\s\+$//e<Enter>
+
+nnoremap <Leader><Enter> :MarkdownHeaders<Enter>
 
 " For CTRL T/D in visual
 vnoremap <Tab> >gv
