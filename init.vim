@@ -70,6 +70,9 @@ Plug 'zeekay/vim-beautify'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'AntonVanAssche/md-headers.nvim'
 
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
 call plug#end()
 
 " Remap Leader to space
@@ -79,6 +82,8 @@ map <Space> <Leader>
 nmap <Space>r :%s/\s\+$//e<Enter>
 
 nnoremap <Leader><Enter> :MarkdownHeaders<Enter>
+
+" Change to your language
 
 " For CTRL T/D in visual
 vnoremap <Tab> >gv
@@ -97,6 +102,9 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Markdown previw on ctrl p
+nnoremap <Leader>s :MarkdownPreviewToggle<Enter>
 
 " Emmet Config
 let g:user_emmet_leader_key='<Leader>'
